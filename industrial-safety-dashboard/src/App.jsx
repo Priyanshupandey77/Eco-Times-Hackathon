@@ -1,15 +1,12 @@
+import DashboardLayout from "./layout/DashboardLayout";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="text-5xl font-bold text-cyan-400">
-          Industrial Safety Dashboard
-        </h1>
-      </div>
-    </>
-  )
+    <DashboardLayout>
+      <Dashboard />
+    </DashboardLayout>
+  );
 }
 
-export default App
+export default App;
