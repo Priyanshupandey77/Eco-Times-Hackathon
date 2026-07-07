@@ -7,8 +7,8 @@ import {
 
 const kpis = [
   {
-    title: "Workers Online",
     value: "248",
+    title: "Workers Online",
     icon: Users,
     color: "text-blue-400",
     bg: "bg-blue-400/10",
@@ -66,12 +66,13 @@ export default function KPICards() {
             </div>
 
             <div className="mt-5">
+                <h3 className="mt-2 text-3xl font-bold text-white">
+                {kpi.value}
+              </h3>
               <p className="text-sm text-slate-400">
                 {kpi.title}
               </p>
-              <h3 className="mt-2 text-3xl font-bold text-white">
-                {kpi.value}
-              </h3>
+              
             </div>
           </div>
         );
