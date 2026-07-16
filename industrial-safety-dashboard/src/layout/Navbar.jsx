@@ -1,103 +1,106 @@
-import { useEffect, useState } from "react";
 import {
-  FaSearch,
-  FaBell,
-  FaUserCircle,
-  FaRegClock,
-} from "react-icons/fa";
-import { IoSettingsOutline } from "react-icons/io5";
+  Bell,
+  Search,
+  Moon,
+  UserCircle2,
+} from "lucide-react";
 
-const Navbar = () => {
-  const [time, setTime] = useState(new Date());
+import { motion } from "framer-motion";
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 h-20 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+    <motion.header
+      initial={{
+        opacity: 0,
+        y: -20,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      transition={{
+        duration: 0.4,
+      }}
+      className="sticky top-0 z-50 h-20 border-b border-slate-800 bg-slate-950/70 backdrop-blur-xl"
+    >
       <div className="h-full px-8 flex items-center justify-between">
 
-        {/* Search */}
-        <div className="relative w-96">
-          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+        {/* Left */}
 
-          <input
-            type="text"
-            placeholder="Search workers, sensors, reports..."
-            className="w-full h-11 rounded-xl bg-slate-800 border border-slate-700 pl-11 pr-16 text-sm text-white placeholder:text-slate-500 outline-none transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20"
-          />
+        <div>
+          <h1 className="text-2xl font-bold text-white">
+            Industrial Safety
+          </h1>
 
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-[11px] text-slate-400">
-            Ctrl K
-          </span>
+          <p className="text-sm text-slate-400">
+            AI Monitoring Dashboard
+          </p>
         </div>
 
-        {/* Right Section */}
+        {/* Right */}
+
         <div className="flex items-center gap-4">
 
-          {/* Live Status */}
-          <div className="flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 h-11">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          {/* Search */}
 
-            <span className="text-sm font-medium text-emerald-400">
-              System Live
-            </span>
+          <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2 w-72">
+
+            <Search
+              className="text-slate-500"
+              size={18}
+            />
+
+            <input
+              placeholder="Search..."
+              className="bg-transparent outline-none text-white flex-1 placeholder:text-slate-500"
+            />
+
           </div>
 
-          {/* Live Clock */}
-          <div className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 h-11">
-            <FaRegClock className="text-cyan-400" />
+          {/* Theme */}
 
-            <span className="text-sm font-medium text-white">
-              {time.toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-              })}
-            </span>
-          </div>
+          <button className="w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center hover:border-cyan-500 transition">
 
-          {/* Notifications */}
-          <button className="relative h-11 w-11 rounded-xl border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-400 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300">
-            <FaBell />
+            <Moon size={18} />
 
-            <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
-              3
-            </span>
           </button>
 
-          {/* Settings */}
-          <button className="h-11 w-11 rounded-xl border border-slate-700 bg-slate-800 flex items-center justify-center text-slate-400 hover:border-cyan-500 hover:text-cyan-400 transition-all duration-300">
-            <IoSettingsOutline size={20} />
-          </button>
+          {/* Notification */}
 
-          {/* Divider */}
-          <div className="h-8 w-px bg-slate-700"></div>
+          <button className="relative w-11 h-11 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center hover:border-cyan-500 transition">
+
+            <Bell size={18} />
+
+            <span className="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500"></span>
+
+          </button>
 
           {/* Profile */}
-          <button className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 hover:border-cyan-500 transition-all duration-300">
-            <FaUserCircle className="text-4xl text-cyan-400" />
 
-            <div className="text-left">
-              <h4 className="text-sm font-semibold text-white">
-                Tanisha Pandey
-              </h4>
+          <div className="flex items-center gap-3 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2">
+
+            <UserCircle2
+              className="text-cyan-400"
+              size={34}
+            />
+
+            <div>
+
+              <h3 className="text-white font-medium">
+                Safety Officer
+              </h3>
 
               <p className="text-xs text-slate-400">
-                Safety Officer
+                Administrator
               </p>
+
             </div>
-          </button>
+
+          </div>
 
         </div>
-      </div>
-    </header>
-  );
-};
 
-export default Navbar;
+      </div>
+    </motion.header>
+  );
+}

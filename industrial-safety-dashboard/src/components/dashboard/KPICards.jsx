@@ -1,11 +1,7 @@
-import {
-  Users,
-  Radio,
-  AlertTriangle,
-  ShieldCheck,
-} from "lucide-react";
+import { Users, Radio, AlertTriangle, ShieldCheck } from "lucide-react";
 
 import { useDashboard } from "../../context/DashboardContext";
+import Card from "../ui/Card";
 
 export default function KPICards() {
   const stats = useDashboard();
@@ -51,10 +47,7 @@ export default function KPICards() {
         const Icon = kpi.icon;
 
         return (
-          <div
-            key={kpi.title}
-            className="group rounded-2xl bg-slate-900 border border-slate-700 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500 hover:shadow-2xl"
-          >
+          <Card key={kpi.title} className="group p-6 hover:border-cyan-500">
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center ${kpi.bg}`}
             >
@@ -69,11 +62,9 @@ export default function KPICards() {
                 {kpi.suffix}
               </h2>
 
-              <p className="mt-2 text-slate-400">
-                {kpi.title}
-              </p>
+              <p className="mt-2 text-slate-400">{kpi.title}</p>
             </div>
-          </div>
+          </Card>
         );
       })}
     </div>

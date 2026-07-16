@@ -4,9 +4,13 @@ import PlantSection from "../components/dashboard/PlantSection";
 import RecentActivity from "../components/dashboard/RecentActivity";
 import RiskChart from "../components/dashboard/RiskChart";
 import SensorHealth from "../components/dashboard/SensorHealth";
+import DashboardBackground from "../components/ui/DashboardBackground";
 
 export default function Dashboard() {
   return (
+    <>
+    <DashboardBackground/>
+    <div className="relative bg-slate-950 min-h-screen p-8">
     <div className="bg-slate-950 min-h-screen p-6">
       <h1 className="text-4xl font-bold text-white mb-6">Dashboard</h1>
 
@@ -29,5 +33,7 @@ export default function Dashboard() {
         <RecentActivity />
       </div>
     </div>
+    </div>
+    </>
   );
 }
